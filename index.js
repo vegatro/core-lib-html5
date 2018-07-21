@@ -1,0 +1,1 @@
+export {default as VgtNetwork} from './src/lib/VgtNetwork';
