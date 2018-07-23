@@ -1,9 +1,12 @@
 import $ from 'jquery';
 
-let ACTIVE_AJAX_REQUESTS = [];
+class VgtNetwork {
+    constructor(){
+    }
 
-const VgtNetwork = {
-    ajaxRequest: function (context, params) {
+    ajaxRequest (params) {
+        let self = this;
+
         if(!params) params = {};
 
         if(typeof(params.abortRequests) === 'undefined')
@@ -19,6 +22,7 @@ const VgtNetwork = {
             preventSuccessDefault   : false,
             preventErrorDefault     : false,
             preventBeforeSendDefault: false,
+            preventCompleteDefault  : false,
             success                 : function(data){ },
             error                   : function(jqXHR, textStatus, error){},
             beforeSend              : function(jqXHR){},
@@ -35,12 +39,12 @@ const VgtNetwork = {
                     console.log('İstek başarılı');
                 }
                 else if(data.Status == 402){
-                    user.logout(context);
-                    context.$root.$f7.toast.show({ text: 'Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapın.' });
+                    // user.logout(context);
+                    // context.$root.$f7.toast.show({ text: 'Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapın.' });
                     return;
                 }
                 else if(data.Status == 403){
-                    context.$root.$f7.toast.show({ text: 'Bu isteği yapmaya yetkiniz bulunmamaktadır.' });
+                    // context.$root.$f7.toast.show({ text: 'Bu isteği yapmaya yetkiniz bulunmamaktadır.' });
                     return;
                 }
                 else
@@ -59,31 +63,31 @@ const VgtNetwork = {
 
             if(!OPTIONS.preventErrorDefault){
                 console.log('İstek başarısız');
-                context.$root.$f7.toast.show({ text: 'İstek başarısız. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.' });
+                // context.$root.$f7.toast.show({ text: 'İstek başarısız. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.' });
             }
 
             if(params.error)
-                params.error();
+                params.error(error);
         }
 
         OPTIONS.beforeSend = function(jqXHR){
             if(!OPTIONS.preventBeforeSendDefault){
-                if(OPTIONS.showLoading)
-                context.$root.$f7.preloader.show();
+                // if(OPTIONS.showLoading)
+                // context.$root.$f7.preloader.show();
                 
                 var counter = 0;
 
                 if(params.abortRequests){
-                    $(ACTIVE_AJAX_REQUESTS).each(function (i, request) {
+                    $(self.constructor.ACTIVE_AJAX_REQUESTS).each(function (i, request) {
                         request.abort();
                         counter++;
                     });
 
-                    $(ACTIVE_AJAX_REQUESTS).each(function () {
-                        ACTIVE_AJAX_REQUESTS.pop();
+                    $(self.constructor.ACTIVE_AJAX_REQUESTS).each(function () {
+                        self.constructor.ACTIVE_AJAX_REQUESTS.pop();
                     });
 
-                    ACTIVE_AJAX_REQUESTS.push(jqXHR);
+                    self.constructor.ACTIVE_AJAX_REQUESTS.push(jqXHR);
                 }
             }
 
@@ -92,11 +96,18 @@ const VgtNetwork = {
         }
 
         OPTIONS.complete = function(){
-            context.$root.$f7.preloader.hide();
-        }
+            if(!OPTIONS.preventCompleteDefault){
+            // context.$root.$f7.preloader.hide();
+            }
+
+            if(params.complete)
+                params.complete();
+        };
         
         $.ajax(OPTIONS);
     }
-};
+}
+
+VgtNetwork.ACTIVE_AJAX_REQUESTS = [];
 
 export {VgtNetwork};

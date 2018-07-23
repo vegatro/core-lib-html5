@@ -1,4 +1,5 @@
 'use strict'
+const glob = require('glob');
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
@@ -23,10 +24,10 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.scss', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      // '@': resolve('src')
     }
   },
   module: {
@@ -64,6 +65,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'sass-loader'
+          }
+        ]
       }
     ]
   },

@@ -8,7 +8,18 @@
   <body>
     <div id="vegatro">
       <div class="test">hello</div>
-      <vgt-form></vgt-form>
+      <vgt-form action="test.php" method="post" submit="(function(){ console.log('submitted') })" error="(function(error){ alert(error) })" prevent-error-default>
+        <div>
+          <vgt-input type="text" placeholder="Username"></vgt-input>
+        </div>
+        <div>
+          <vgt-input type="email" placeholder="Email" outlined required></vgt-input>
+        </div>
+        <div>
+          <vgt-input type="textarea" placeholder="Message"></vgt-input>
+        </div>
+        <input type="submit"></input>
+      </vgt-form>
     </div>
     <!-- built files will be auto injected -->
   </body>
