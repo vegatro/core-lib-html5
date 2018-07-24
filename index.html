@@ -7,20 +7,21 @@
   </head>
   <body>
     <div id="vegatro">
-      <div class="test">hello</div>
-      <vgt-form action="test.php" method="post" submit="(function(){ console.log('submitted') })" error="(function(error){ alert(error) })" prevent-error-default>
+      <vgt-form method="post" action="test.php">
         <div>
           <vgt-input type="text" placeholder="Username"></vgt-input>
         </div>
         <div>
-          <vgt-input type="email" placeholder="Email" outlined required></vgt-input>
+          <vgt-button unelevated icon="delete" style="height:54px;">Gönder</vgt-button>
         </div>
-        <div>
-          <vgt-input type="textarea" placeholder="Message"></vgt-input>
-        </div>
-        <input type="submit"></input>
       </vgt-form>
     </div>
+
+    <script>
+      function onBeforeSend(){
+        alert('on before');
+      }
+    </script>
     <!-- built files will be auto injected -->
   </body>
 </html>

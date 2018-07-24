@@ -10,7 +10,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@material/button": "^0.37.1",
     "@material/textfield": "^0.37.1",
+    "material-icons": "^0.2.3",
     "vue": "^2.5.2"
   },
   "devDependencies": {
