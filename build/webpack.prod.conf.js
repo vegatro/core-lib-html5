@@ -28,6 +28,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     // chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
     filename: utils.assetsPath('js/vegatro-core.js')
   },
+  externals: {
+    'vue': 'Vue'
+  },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
