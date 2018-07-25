@@ -42,7 +42,8 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'vegatro-core',
+    // assetsSubDirectory: 'vegatro-core',
+    assetsSubDirectory: '',
     assetsPublicPath: '/',
 
     /**
