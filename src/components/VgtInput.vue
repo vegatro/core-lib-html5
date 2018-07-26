@@ -76,15 +76,15 @@ export default{
 <style lang="scss">
     @import "@material/textfield/mdc-text-field";
 
-    .mdc-text-field{
-        margin:0px !important;
-        height:56px !important;
-    }
+    // .mdc-text-field:not(.mdc-text-field--textarea){
+    //     margin:0px !important;
+    //     height:56px !important;
+    // }
 
-    .mdc-text-field--focused .mdc-floating-label{
-        bottom:18px;
-        color: var(--mdc-theme-primary) !important;
-    }
+    // .mdc-text-field--focused:not(.mdc-text-field--textarea.mdc-text-field--focused) .mdc-floating-label{
+    //     bottom:18px;
+    //     color: var(--mdc-theme-primary) !important;
+    // }
 
     // .mdc-text-field--focused{
         // @include mdc-text-field-line-ripple-color(#ff0000);

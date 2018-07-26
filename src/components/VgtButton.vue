@@ -43,6 +43,10 @@ export default {
         color: {
             type: String,
             default: ''
+        },
+        submit: {
+            type: Boolean,
+            default: false
         }
     },
     mounted: function(){
@@ -53,6 +57,12 @@ export default {
 
         if(color_.length > 0){
             $(self.$el).css('--mdc-theme-primary', color_);
+        }
+
+        if(self.submit){
+            $(self.$el).on('click', function(){
+                $(this).parents('form').first().submit();
+            });
         }
     }
 }
