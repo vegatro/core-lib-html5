@@ -1,5 +1,5 @@
 <template>
-    <button v-if="submit" type="submit" 
+    <button v-if="vgtSubmit" type="submit" 
         :class="'vgt-button mdc-button' 
             + (outlined ? ' mdc-button--outlined' : '') 
             + (raised ? ' mdc-button--raised' : '')
@@ -55,7 +55,7 @@ export default {
             type: String,
             default: ''
         },
-        submit: {
+        vgtSubmit: {
             type: Boolean,
             default: false
         }
