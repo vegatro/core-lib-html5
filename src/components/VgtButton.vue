@@ -55,7 +55,7 @@ export default {
             type: String,
             default: ''
         },
-        submit: {
+        submitButton: {
             type: Boolean,
             default: false
         }

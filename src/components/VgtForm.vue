@@ -1,5 +1,5 @@
 <template>
-  <form class="vgt-form" :action="action">
+  <form class="vgt-form" :action="actionUrl">
     <slot></slot>
   </form>
 </template>
@@ -13,7 +13,7 @@ let self;
 export default {
   name: 'VgtForm',
   props: {
-    action: {
+    actionUrl: {
       type: String,
       default: ''
     },
@@ -77,7 +77,7 @@ export default {
       try{
         new VgtNetwork().ajaxRequest({
           type: self.method,
-          url: self.action,
+          url: self.actionUrl,
           data: $form.serialize(),
           success: function(response){
             if(self.success.length)
