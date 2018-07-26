@@ -1,5 +1,5 @@
 <template>
-  <form class="vgt-form" :action="actionUrl">
+  <form class="vgt-form" :action="vgtAction">
     <slot></slot>
   </form>
 </template>
@@ -13,51 +13,51 @@ let self;
 export default {
   name: 'VgtForm',
   props: {
-    actionUrl: {
+    vgtAction: {
       type: String,
       default: ''
     },
-    method: {
+    vgtMethod: {
       type: String,
       default: 'GET'
     },
-    submit: {
+    vgtSubmit: {
       type: String,
       default: ''
     },
-    success: {
+    vgtSuccess: {
       type: String,
       default: ''
     },
-    error: {
+    vgtError: {
       type: String,
       default: ''
     },
-    before: {
+    vgtBefore: {
       type: String,
       default: ''
     },
-    complete: {
+    vgtComplete: {
       type: String,
       default: ''
     },
-    preventSubmitDefault: {
+    vgtPreventSubmitDefault: {
       type: Boolean,
       default: false
     },
-    preventSuccessDefault: {
+    vgtPreventSuccessDefault: {
       type: Boolean,
       default: false
     },
-    preventErrorDefault: {
+    vgtPreventErrorDefault: {
       type: Boolean,
       default: false
     },
-    preventBeforeDefault: {
+    vgtPreventBeforeDefault: {
       type: Boolean,
       default: false
     },
-    preventCompleteDefault: {
+    vgtPreventCompleteDefault: {
       type: Boolean,
       default: false
     }
@@ -66,39 +66,39 @@ export default {
     self = this;
 
     $(self.$el).on('submit', function(){
-      if(self.submit.length)
-        eval(self.submit)();
+      if(self.vgtSubmit.length)
+        eval(self.vgtSubmit)();
 
-      if(self.preventSubmitDefault)
+      if(self.vgtPreventSubmitDefault)
         return false;
 
       var $form = $(this);
 
       try{
         new VgtNetwork().ajaxRequest({
-          type: self.method,
-          url: self.actionUrl,
+          type: self.vgtMethod,
+          url: self.vgtAction,
           data: $form.serialize(),
           success: function(response){
-            if(self.success.length)
-             eval(self.success)(response);
+            if(self.vgtSuccess.length)
+             eval(self.vgtSuccess)(response);
           },
           error: function(error){
-            if(self.error.length)
-              eval(self.error)(error);            
+            if(self.vgtError.length)
+              eval(self.vgtError)(error);            
           },
           beforeSend: function(jqXHR){
-            if(self.before.length)
-              eval(self.before)(jqXHR); 
+            if(self.vgtBefore.length)
+              eval(self.vgtBefore)(jqXHR); 
           },
           complete: function(){
-            if(self.complete.length)
-              eval(self.complete)();
+            if(self.vgtComplete.length)
+              eval(self.vgtComplete)();
           },
-          preventSuccessDefault: self.preventSuccessDefault,
-          preventErrorDefault: self.preventErrorDefault,
-          preventBeforeSendDefault: self.preventBeforeDefault,
-          preventCompleteDefault: self.preventCompleteDefault
+          preventSuccessDefault: self.vgtPreventSuccessDefault,
+          preventErrorDefault: self.vgtPreventErrorDefault,
+          preventBeforeSendDefault: self.vgtPreventBeforeDefault,
+          preventCompleteDefault: self.vgtPreventCompleteDefault
         });
       }
       catch(error){

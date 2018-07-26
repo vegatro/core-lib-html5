@@ -1,22 +1,22 @@
 <template>
     <button v-if="vgtSubmit" type="submit" 
         :class="'vgt-button mdc-button' 
-            + (outlined ? ' mdc-button--outlined' : '') 
-            + (raised ? ' mdc-button--raised' : '')
-            + (unelevated ? ' mdc-button--unelevated' : '')">
+            + (vgtOutlined ? ' mdc-button--outlined' : '') 
+            + (vgtRaised ? ' mdc-button--raised' : '')
+            + (vgtUnelevated ? ' mdc-button--unelevated' : '')">
 
-        <i v-if="icon.length > 0" class="material-icons mdc-button__icon" aria-hidden="true">{{icon}}</i>
+        <i v-if="vgtIcon.length > 0" class="material-icons mdc-button__icon" aria-hidden="true">{{vgtIcon}}</i>
 
         <slot></slot>
     </button>
 
     <a v-else
         :class="'vgt-button mdc-button' 
-            + (outlined ? ' mdc-button--outlined' : '') 
-            + (raised ? ' mdc-button--raised' : '')
-            + (unelevated ? ' mdc-button--unelevated' : '')">
+            + (vgtOutlined ? ' mdc-button--outlined' : '') 
+            + (vgtRaised ? ' mdc-button--raised' : '')
+            + (vgtUnelevated ? ' mdc-button--unelevated' : '')">
 
-        <i v-if="icon.length > 0" class="material-icons mdc-button__icon" aria-hidden="true">{{icon}}</i>
+        <i v-if="vgtIcon.length > 0" class="material-icons mdc-button__icon" aria-hidden="true">{{vgtIcon}}</i>
 
         <slot></slot>
     </a>
@@ -31,27 +31,27 @@ let self;
 export default {
     name: 'VgtButton',
     props: {
-        link: {
+        vgtLink: {
             String,
             default: ''
         },
-        icon: {
+        vgtIcon: {
             String,
             default: ''
         },
-        unelevated: {
+        vgtUnelevated: {
             type: Boolean,
             default: false
         },
-        raised: {
+        vgtRaised: {
             type: Boolean,
             default: false
         },
-        outlined: {
+        vgtOutlined: {
             type: Boolean,
             default: false
         },
-        color: {
+        vgtColor: {
             type: String,
             default: ''
         },
@@ -62,7 +62,7 @@ export default {
     },
     mounted: function(){
         self = this;
-        let color_ = self.color;
+        let color_ = self.vgtColor;
 
         new MDCRipple(self.$el);
 
