@@ -1,5 +1,16 @@
 <template>
-    <a 
+    <button v-if="submit" type="submit" 
+        :class="'vgt-button mdc-button' 
+            + (outlined ? ' mdc-button--outlined' : '') 
+            + (raised ? ' mdc-button--raised' : '')
+            + (unelevated ? ' mdc-button--unelevated' : '')">
+
+        <i v-if="icon.length > 0" class="material-icons mdc-button__icon" aria-hidden="true">{{icon}}</i>
+
+        <slot></slot>
+    </button>
+
+    <a v-else
         :class="'vgt-button mdc-button' 
             + (outlined ? ' mdc-button--outlined' : '') 
             + (raised ? ' mdc-button--raised' : '')
@@ -57,12 +68,6 @@ export default {
 
         if(color_.length > 0){
             $(self.$el).css('--mdc-theme-primary', color_);
-        }
-
-        if(self.submit){
-            $(self.$el).on('click', function(){
-                $(this).parents('form').first().submit();
-            });
         }
     }
 }

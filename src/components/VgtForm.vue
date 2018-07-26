@@ -1,5 +1,5 @@
 <template>
-  <form class="vgt-form">
+  <form class="vgt-form" :action="action">
     <slot></slot>
   </form>
 </template>

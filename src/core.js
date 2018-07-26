@@ -14,8 +14,8 @@ Vue.component('vgt-button', VgtButton);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-// new Vue({
-//   el: '#vegatro',
-//   // components: { App },
-//   // template: '<App/>'
-// })
+new Vue({
+  el: '#vegatro',
+  // components: { App },
+  // template: '<App/>'
+})
