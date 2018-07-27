@@ -1,13 +1,13 @@
 <template>
 
     <div v-if="vgtType == 'textarea'" class="mdc-text-field mdc-text-field--textarea">
-        <textarea id="textarea" :name="vgtName" class="mdc-text-field__input" rows="8" cols="40" :required="vgtRequired" autocomplete="off"></textarea>
+        <textarea id="textarea" :name="vgtName" :value="vgtValue" class="mdc-text-field__input" rows="8" cols="40" :required="vgtRequired" autocomplete="off"></textarea>
         <label v-if="vgtPlaceholder.length > 0" for="textarea" class="mdc-floating-label">{{vgtPlaceholder}}</label>
     </div>
 
     <div v-else-if="vgtType == 'checkbox'" class="mdc-form-field">
     <div :class="'mdc-checkbox' + (vgtDisabled ? ' mdc-checkbox--disabled' : '')">
-        <input type="checkbox" :name="vgtName" class="mdc-checkbox__native-control" id="checkbox-1" :checked="vgtChecked" :disabled="vgtDisabled" />
+        <input type="checkbox" :name="vgtName" :value="vgtValue" class="mdc-checkbox__native-control" id="checkbox-1" :checked="vgtChecked" :disabled="vgtDisabled" />
         <div class="mdc-checkbox__background">
             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                 <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
@@ -20,14 +20,14 @@
 
     <div v-else-if="(vgtType != 'textarea' && vgtType != 'checkbox' && vgtType != 'radio') && !vgtOutlined" :class="'mdc-text-field' + (vgtIcon.length > 0 ? ' mdc-text-field--with-leading-icon': '')">
         <i v-if="vgtIcon.length > 0" class="material-icons mdc-text-field__icon">{{vgtIcon}}</i>
-        <input :type="vgtType" :name="vgtName" id="my-text-field" class="mdc-text-field__input" :required="vgtRequired" autocomplete="off">
+        <input :type="vgtType" :name="vgtName" :value="vgtValue" id="my-text-field" class="mdc-text-field__input" :required="vgtRequired" autocomplete="off">
         <label v-if="vgtPlaceholder.length > 0" class="mdc-floating-label" for="my-text-field">{{vgtPlaceholder}}</label>
         <div class="mdc-line-ripple"></div>
     </div>
 
     <div v-else-if="(vgtType != 'textarea' && vgtType != 'checkbox' && vgtType != 'radio') && vgtOutlined" :class="'mdc-text-field mdc-text-field--outlined' + (vgtIcon.length > 0 ? ' mdc-text-field--with-leading-icon': '')">
         <i v-if="vgtIcon.length > 0" class="material-icons mdc-text-field__icon">{{vgtIcon}}</i>
-        <input :type="vgtType" :name="vgtName" autocomplete="off" id="tf-outlined" class="mdc-text-field__input" :required="vgtRequired">
+        <input :type="vgtType" :name="vgtName" :value="vgtValue" autocomplete="off" id="tf-outlined" class="mdc-text-field__input" :required="vgtRequired">
         <label v-if="vgtPlaceholder.length > 0" for="tf-outlined mdc-theme--primary" class="mdc-floating-label">{{vgtPlaceholder}}</label>
         <div class="mdc-notched-outline">
             <svg>
@@ -55,6 +55,10 @@ export default{
             default: 'text'
         },
         vgtName: {
+            type: String,
+            default: ''
+        },
+        vgtValue: {
             type: String,
             default: ''
         },

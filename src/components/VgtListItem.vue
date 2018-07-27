@@ -1,6 +1,6 @@
 <template>
     <li class="mdc-list-item mdc-ripple-surface" @click="checked = !checked">
-        <vgt-input v-if="vgtCheckbox" :vgt-name="vgtName" vgt-type="checkbox" :vgt-checked="checked"></vgt-input>
+        <vgt-input v-if="vgtCheckbox" :vgt-name="vgtName" vgt-type="checkbox" :vgt-checked="checked" :vgt-value="vgtValue"></vgt-input>
         <span v-if="vgtIcon.length > 0" class="mdc-list-item__graphic material-icons" aria-hidden="true">{{vgtIcon}}</span>
         <slot></slot>
     </li>
@@ -29,6 +29,10 @@ export default {
             default: false
         },
         vgtName: {
+            type: String,
+            default: ''
+        },
+        vgtValue: {
             type: String,
             default: ''
         }
