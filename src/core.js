@@ -6,6 +6,7 @@ import VgtInput from './components/VgtInput';
 import VgtButton from './components/VgtButton';
 import VgtList from './components/VgtList';
 import VgtListItem from './components/VgtListItem';
+import VgtCard from './components/VgtCard';
 require('material-icons/iconfont/material-icons.css');
 // import App from './App'
 
@@ -14,6 +15,7 @@ Vue.component('vgt-input', VgtInput);
 Vue.component('vgt-button', VgtButton);
 Vue.component('vgt-list', VgtList);
 Vue.component('vgt-list-item', VgtListItem);
+Vue.component('vgt-card', VgtCard);
 
 Vue.config.productionTip = false;
 
