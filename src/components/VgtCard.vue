@@ -1,5 +1,5 @@
 <template>
-    <div class="mdc-card">
+    <div class="mdc-card vgt-card">
       <slot name="header"></slot>
       <slot></slot>
       <slot name="footer"></slot>
@@ -29,4 +29,7 @@ export default {
 <style lang="scss">
     @import "@material/card/mdc-card";
 
+    .vgt-card{
+        padding:20px;
+    }
 </style>

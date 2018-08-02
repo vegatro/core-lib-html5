@@ -1,5 +1,5 @@
 <template>
-    <button v-if="vgtSubmit" type="submit" 
+    <button v-if="vgtSubmit" type="submit"
         :class="'vgt-button mdc-button' 
             + (vgtOutlined ? ' mdc-button--outlined' : '') 
             + (vgtRaised ? ' mdc-button--raised' : '')
@@ -76,7 +76,8 @@ export default {
 <style lang="scss">
     @import "@material/button/mdc-button";
 
-    .mdc-button{
+    .vgt-button{
+        width:auto;
         vertical-align: top;
     }
 </style>
