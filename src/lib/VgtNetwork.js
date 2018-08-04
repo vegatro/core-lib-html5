@@ -91,8 +91,8 @@ class VgtNetwork {
                 }
             }
 
-            if(params.beforeSend)
-                params.beforeSend(jqXHR);
+            if(OPTIONS.before)
+                OPTIONS.before(jqXHR);
         }
 
         OPTIONS.complete = function(){

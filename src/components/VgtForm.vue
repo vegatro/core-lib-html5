@@ -33,6 +33,10 @@ export default {
       type: String,
       default: ''
     },
+    vgtBeforeInit: {
+      type: String,
+      default: ''
+    },
     vgtBefore: {
       type: String,
       default: ''
@@ -75,6 +79,9 @@ export default {
       var $form = $(this);
 
       try{
+        if(self.vgtBeforeInit.length)
+          eval(self.vgtBeforeInit)();
+
         new VgtNetwork().ajaxRequest({
           type: self.vgtMethod,
           url: self.vgtAction,
@@ -87,11 +94,9 @@ export default {
             if(self.vgtError.length)
               eval(self.vgtError)(error);            
           },
-          beforeSend: function(jqXHR){
+          before: function(jqXHR){
             if(self.vgtBefore.length)
               eval(self.vgtBefore)(jqXHR);
-
-            this.data = $form.serialize();
           },
           complete: function(){
             if(self.vgtComplete.length)

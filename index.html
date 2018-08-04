@@ -13,23 +13,23 @@
   </head>
   <body>
     <div id="vegatro">
-      <vgt-drawer>
+      <!-- <vgt-drawer>
         <vgt-drawer-item vgt-icon="home" vgt-label="Ana Sayfa">
           <vgt-drawer-item vgt-icon="event" vgt-label="Etkinlikler"></vgt-drawer-item>
         </vgt-drawer-item>
         <vgt-drawer-item vgt-icon="account_circle" vgt-label="Hesabım"></vgt-drawer-item>
-      </vgt-drawer>
-      <vgt-form vgt-method="post">
+      </vgt-drawer> -->
+      <vgt-form id="form1" vgt-method="post" vgt-before-init="onBeforeSend">
         <div>
           <div>
             <vgt-input vgt-type="checkbox" vgt-disabled vgt-checked vgt-placeholder="Username"></vgt-input>
           </div>
           <div>
-            <vgt-input vgt-type="text" vgt-placeholder="Message"></vgt-input>
+            <vgt-input vgt-type="text" vgt-name="message" vgt-placeholder="Message"></vgt-input>
           </div>
         </div>
         <div>
-          <vgt-button submit-button icon="delete">Gönder</vgt-button>
+          <vgt-button vgt-submit icon="delete">Gönder</vgt-button>
         </div>
       </vgt-form>
       <vgt-list>
@@ -46,7 +46,12 @@
 
     <script>
       function onBeforeSend(){
-        alert('on before');
+        var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "name_you_want");
+        input.setAttribute("value", "value_you_want");
+
+        document.getElementById('form1').appendChild(input);
       }
     </script>
     <!-- built files will be auto injected -->
