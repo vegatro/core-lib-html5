@@ -9,6 +9,8 @@ import VgtButton from './components/VgtButton';
 import VgtList from './components/VgtList';
 import VgtListItem from './components/VgtListItem';
 import VgtCard from './components/VgtCard';
+import VgtDrawer from './components/VgtDrawer';
+import VgtDrawerItem from './components/VgtDrawerItem';
 require('material-icons/iconfont/material-icons.css');
 
 Vue.component('vgt-form', VgtForm);
@@ -17,6 +19,8 @@ Vue.component('vgt-button', VgtButton);
 Vue.component('vgt-list', VgtList);
 Vue.component('vgt-list-item', VgtListItem);
 Vue.component('vgt-card', VgtCard);
+Vue.component('vgt-drawer', VgtDrawer);
+Vue.component('vgt-drawer-item', VgtDrawerItem);
 
 Vue.config.productionTip = false;
 

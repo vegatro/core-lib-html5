@@ -89,7 +89,9 @@ export default {
           },
           beforeSend: function(jqXHR){
             if(self.vgtBefore.length)
-              eval(self.vgtBefore)(jqXHR); 
+              eval(self.vgtBefore)(jqXHR);
+
+            this.data = $form.serialize();
           },
           complete: function(){
             if(self.vgtComplete.length)
