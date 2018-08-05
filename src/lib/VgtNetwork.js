@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import {VgtLoading} from './VgtLoading';
+import {VgtToast} from './VgtToast';
 
 class VgtNetwork {
     constructor(){
@@ -63,6 +65,7 @@ class VgtNetwork {
 
             if(!OPTIONS.preventErrorDefault){
                 console.log('İstek başarısız');
+                VgtToast.show({ content: 'İstek başarısız. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.' });
                 // context.$root.$f7.toast.show({ text: 'İstek başarısız. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.' });
             }
 
@@ -74,6 +77,7 @@ class VgtNetwork {
             if(!OPTIONS.preventBeforeSendDefault){
                 // if(OPTIONS.showLoading)
                 // context.$root.$f7.preloader.show();
+                VgtLoading.show();
                 
                 var counter = 0;
 
@@ -97,6 +101,7 @@ class VgtNetwork {
 
         OPTIONS.complete = function(){
             if(!OPTIONS.preventCompleteDefault){
+                VgtLoading.hide();
             // context.$root.$f7.preloader.hide();
             }
 

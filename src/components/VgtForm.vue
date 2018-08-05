@@ -17,6 +17,10 @@ export default {
       type: String,
       default: ''
     },
+    vgtReturnUrl: {
+      type: String,
+      default: ''
+    },
     vgtMethod: {
       type: String,
       default: 'GET'
@@ -89,6 +93,10 @@ export default {
           success: function(response){
             if(self.vgtSuccess.length)
              eval(self.vgtSuccess)(response);
+
+            if(response.Status == 200 && self.vgtReturnUrl.length > 0){
+              location.href = vgtReturnUrl;
+            }
           },
           error: function(error){
             if(self.vgtError.length)
