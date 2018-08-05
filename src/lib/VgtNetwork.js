@@ -43,14 +43,18 @@ class VgtNetwork {
                 else if(data.Status == 402){
                     // user.logout(context);
                     // context.$root.$f7.toast.show({ text: 'Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapın.' });
+                    VgtToast.show({ content: 'Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapın.' });
                     return;
                 }
                 else if(data.Status == 403){
                     // context.$root.$f7.toast.show({ text: 'Bu isteği yapmaya yetkiniz bulunmamaktadır.' });
+                    VgtToast.show({ content: 'Bu isteği yapmaya yetkiniz bulunmamaktadır.' });
                     return;
                 }
-                else
+                else{
                     console.log('İstek başarısız');
+                    VgtToast.show({ content: 'İstek başarısız. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.' });
+                }
             }
             
             if(params.success)

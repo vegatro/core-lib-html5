@@ -95,7 +95,7 @@ export default {
              eval(self.vgtSuccess)(response);
 
             if(response.Status == 200 && self.vgtReturnUrl.length > 0){
-              location.href = vgtReturnUrl;
+              location.href = self.vgtReturnUrl;
             }
           },
           error: function(error){
