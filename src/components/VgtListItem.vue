@@ -28,6 +28,10 @@ export default {
             type: Boolean,
             default: false
         },
+        vgtChecked: {
+            type: Boolean,
+            default: false
+        },
         vgtName: {
             type: String,
             default: ''
@@ -46,6 +50,8 @@ export default {
         self = this;
 
         new MDCRipple(self.$el);
+
+        self.checked = self.vgtChecked;
 
         // if(self.vgtCheckbox){
         //     $(self.$el).on('click', function(){
