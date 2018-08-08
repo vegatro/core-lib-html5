@@ -73,6 +73,9 @@ $(document).on('click', '.vgt-link', function(){
     var href = $(this).attr('href');
     var callback = $(this).attr('data-callback');
 
+    if(href == '#')
+        return false;
+
     if(typeof(target) === 'undefined')
         target = '#vgt-content-body';
     if(typeof(container) === 'undefined')
