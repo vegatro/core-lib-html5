@@ -14,6 +14,7 @@
     "@material/card": "^0.37.1",
     "@material/checkbox": "^0.37.1",
     "@material/form-field": "^0.37.1",
+    "@material/linear-progress": "^0.38.0",
     "@material/list": "^0.37.1",
     "@material/ripple": "^0.37.1",
     "@material/textfield": "^0.37.1",

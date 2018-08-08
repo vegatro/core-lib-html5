@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import {VgtLoading} from './VgtLoading';
+import {VgtPartialLoading} from './VgtPartialLoading';
 import {VgtToast} from './VgtToast';
 
 class VgtNetwork {
@@ -114,6 +115,14 @@ class VgtNetwork {
         };
         
         $.ajax(OPTIONS);
+    }
+
+    loadPartial(url, target, container){
+        VgtPartialLoading.show(container);
+
+        $(container).load(url + ' ' + target, function(){
+            initializeVgtApp();
+        });
     }
 }
 
