@@ -128,8 +128,8 @@ class VgtNetwork {
         $.get(url, function (data) {
             var title = $(data).filter('title').text();
 
-            if($(data).filter('.nav-bar').length){
-                var navbar = $(data).filter('.nav-bar').html();
+            if($(data).find('.nav-bar').length){
+                var navbar = $(data).find('.nav-bar').html();
                 $('.nav-bar').html(navbar);
             }
 
