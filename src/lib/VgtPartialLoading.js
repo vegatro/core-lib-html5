@@ -11,7 +11,7 @@ class VgtPartialLoading {
         var top = ($(container).innerHeight() - 32) / 2;
         var left = ($(container).innerWidth() - 32) / 2;
         
-        $(container).append('<div class="vgt-loading-overlay"></div>');
+        $(container).append('<div class="vgt-loading-overlay" style="position:absolute;></div>');
 
         $(container).append('\
                 <div class="vgt-load-progress" style="position:absolute;">\
