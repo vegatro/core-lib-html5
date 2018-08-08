@@ -126,8 +126,10 @@ class VgtNetwork {
         // });
 
         $.get(url, function (data) {
+            var title = $(data).find('title');
             data = $(data).find(target).html();
             $(container).empty().append(data);
+            document.title = title;
             
             initializeVgtApp();
             eval(callback)();
