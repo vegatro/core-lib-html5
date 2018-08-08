@@ -126,13 +126,14 @@ class VgtNetwork {
         // });
 
         $.get(url, function (data) {
-            var title = $(data).find('title').text();
+            var title = $(data).filter('title').text();
+
             data = $(data).find(target).html();
             $(container).empty().append(data);
             document.title = title;
             
             initializeVgtApp();
-            eval(callback)();
+            // eval(callback)();
         });
     }
 }
