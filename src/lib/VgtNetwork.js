@@ -133,7 +133,7 @@ class VgtNetwork {
             document.title = title;
             
             initializeVgtApp();
-            // eval(callback)();
+            eval(callback)();
         });
     }
 }
