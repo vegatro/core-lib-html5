@@ -27,6 +27,10 @@ export default {
         vgtContainer: {
             type: String,
             default: '#vgt-content-body'
+        },
+        vgtCallback: {
+            type: String,
+            default: ''
         }
     },
     mounted: function(){
@@ -36,12 +40,15 @@ export default {
             console.log('clicked');
 
             if(self.vgtHistoryPush){
+                var pushObj = {
+                    url: self.vgtHref,
+                    target: self.vgtTarget,
+                    container: self.vgtContainer,
+                    callback: self.vgtCallback
+                };
+
                 window.history.pushState(
-                    {
-                        url: self.vgtHref,
-                        target: self.vgtTarget,
-                        container: self.vgtContainer
-                    }, 
+                    pushObj, 
                     "", 
                     self.vgtHref
                 );

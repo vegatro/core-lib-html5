@@ -117,11 +117,12 @@ class VgtNetwork {
         $.ajax(OPTIONS);
     }
 
-    loadPartial(url, target, container){
+    loadPartial(url, target, container, callback){
         VgtPartialLoading.show(container);
 
         $(container).load(url + ' ' + target, function(){
             initializeVgtApp();
+            eval(callback)();
         });
     }
 }

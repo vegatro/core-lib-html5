@@ -62,5 +62,5 @@ if(process.env.NODE_ENV === 'development'){
 window.onpopstate = history.onpushstate = function(e) {
     console.log('push', e);
 
-    new VgtNetwork().loadPartial(e.state.url, e.state.target, e.state.container);
+    new VgtNetwork().loadPartial(e.state.url, e.state.target, e.state.container, e.state.callback);
 };
