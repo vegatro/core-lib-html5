@@ -126,6 +126,11 @@ class VgtNetwork {
         // });
 
         $.get(url, function (data) {
+            if(data.indexOf('"Status":402') != -1){
+                location.reload();
+                return;
+            }
+
             var title = $(data).filter('title').text();
 
             if($(data).find('.nav-bar').length){
