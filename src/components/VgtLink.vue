@@ -1,5 +1,5 @@
 <template>
-    <a class="vgt-link" :data-history-push="vgtHistoryPush" :data-target="vgtTarget" :data-container="vgtContainer" :href="vgtHref">
+    <a class="vgt-link" :data-history-push="vgtHistoryPush" :data-target="vgtTarget" :data-container="vgtContainer" :data-callback="vgtCallback" :href="vgtHref">
         <slot></slot>
     </a>
 </template>
@@ -36,26 +36,26 @@ export default {
     mounted: function(){
         self = this;
 
-        $(self.$el).on('click', function(){
-            console.log('clicked');
+        // $(self.$el).on('click', function(){
+        //     console.log('clicked');
 
-            if(self.vgtHistoryPush){
-                var pushObj = {
-                    url: self.vgtHref,
-                    target: self.vgtTarget,
-                    container: self.vgtContainer,
-                    callback: self.vgtCallback
-                };
+        //     if(self.vgtHistoryPush){
+        //         var pushObj = {
+        //             url: self.vgtHref,
+        //             target: self.vgtTarget,
+        //             container: self.vgtContainer,
+        //             callback: self.vgtCallback
+        //         };
 
-                window.history.pushState(
-                    pushObj, 
-                    "", 
-                    self.vgtHref
-                );
+        //         window.history.pushState(
+        //             pushObj, 
+        //             "", 
+        //             self.vgtHref
+        //         );
 
-                return false;
-            }
-        });
+        //         return false;
+        //     }
+        // });
     }
 }
 </script>

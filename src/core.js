@@ -1,5 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import $ from 'jquery';
 import {VgtNetwork} from './lib/VgtNetwork';
 
 import Vue from 'vue';
@@ -64,3 +65,33 @@ window.onpopstate = history.onpushstate = function(e) {
 
     new VgtNetwork().loadPartial(e.state.url, e.state.target, e.state.container, e.state.callback);
 };
+
+$(document).on('click', '.vgt-link', function(){
+    var historyPush = $(this).attr('data-history-push') == 'true';
+    var target = $(this).attr('data-target');
+    var container = $(this).attr('data-container');
+    var href = $(this).attr('href');
+    var callback = $(this).attr('data-callback');
+
+    if(typeof(target) === 'undefined')
+        target = '#vegatro';
+    if(typeof(container) === 'undefined')
+        container = '#vegatro';
+
+    if(historyPush){
+        var pushObj = {
+            url: href,
+            target: target,
+            container: container,
+            callback: callback
+        };
+
+        window.history.pushState(
+            pushObj, 
+            "", 
+            href
+        );
+
+        return false;
+    }
+});
