@@ -74,9 +74,11 @@ $(document).on('click', '.vgt-link', function(){
     var callback = $(this).attr('data-callback');
 
     if(typeof(target) === 'undefined')
-        target = '#vegatro';
+        target = '#vgt-content-body';
     if(typeof(container) === 'undefined')
-        container = '#vegatro';
+        container = '#vgt-content-body';
+    if(typeof(callback) === 'undefined')
+        callback = 'initializeApp';
 
     if(historyPush){
         var pushObj = {

@@ -120,7 +120,15 @@ class VgtNetwork {
     loadPartial(url, target, container, callback){
         VgtPartialLoading.show(container);
 
-        $(container).load(url + ' ' + target, function(){
+        // $(container).load(url + ' ' + target, function(){
+        //     initializeVgtApp();
+        //     eval(callback)();
+        // });
+
+        $.get(url, function (data) {
+            data = $(data).find(target).html();
+            $(container).empty().append(data);
+            
             initializeVgtApp();
             eval(callback)();
         });
