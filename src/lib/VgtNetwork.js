@@ -128,6 +128,11 @@ class VgtNetwork {
         $.get(url, function (data) {
             var title = $(data).filter('title').text();
 
+            if($(data).filter('.nav-bar').length){
+                var navbar = $(data).filter('.nav-bar').html();
+                $('.nav-bar').html(navbar);
+            }
+
             data = $(data).find(target).html();
             $(container).empty().append(data);
             document.title = title;
