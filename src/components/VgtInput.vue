@@ -1,21 +1,21 @@
 <template>
 
     <div v-if="vgtType == 'textarea'" class="mdc-text-field mdc-text-field--textarea">
-        <textarea id="textarea" :name="vgtName" :value="vgtValue" class="mdc-text-field__input" rows="8" cols="40" :required="vgtRequired" autocomplete="off"></textarea>
+        <textarea :name="vgtName" :value="vgtValue" class="mdc-text-field__input" :required="vgtRequired" autocomplete="off"></textarea>
         <label v-if="vgtPlaceholder.length > 0" for="textarea" class="mdc-floating-label">{{vgtPlaceholder}}</label>
     </div>
 
     <div v-else-if="vgtType == 'checkbox'" class="mdc-form-field">
-    <div :class="'mdc-checkbox' + (vgtDisabled ? ' mdc-checkbox--disabled' : '')">
-        <input type="checkbox" :name="vgtName" :value="vgtValue" class="mdc-checkbox__native-control" id="checkbox-1" :checked="vgtChecked" :disabled="vgtDisabled" />
-        <div class="mdc-checkbox__background">
-            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-            </svg>
-            <div class="mdc-checkbox__mixedmark"></div>
+        <div :class="'mdc-checkbox' + (vgtDisabled ? ' mdc-checkbox--disabled' : '')">
+            <input type="checkbox" :name="vgtName" :value="vgtValue" class="mdc-checkbox__native-control" id="checkbox-1" :checked="vgtChecked" :disabled="vgtDisabled" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
         </div>
-    </div>
-    <label for="checkbox-1">{{vgtPlaceholder}}</label>
+        <label for="checkbox-1">{{vgtPlaceholder}}</label>
     </div>
 
     <div v-else-if="(vgtType != 'textarea' && vgtType != 'checkbox' && vgtType != 'radio') && !vgtOutlined" :class="'mdc-text-field' + (vgtIcon.length > 0 ? ' mdc-text-field--with-leading-icon': '')">
@@ -106,6 +106,9 @@ export default{
         if(color_.length > 0){
             $(self.$el).css('--mdc-theme-primary', color_);
         }
+
+        $(self.$el).find('.mdc-text-field__input').outerHeight(parseInt($(self.$el).css('height')));
+        // $('.mdc-text-field textarea').height($(self.$el).css('height'));
     }
 }
 </script>
@@ -117,6 +120,31 @@ export default{
 
     .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label{
         color: var(--mdc-theme-primary);
+    }
+
+    .mdc-text-field--outlined .mdc-notched-outline{
+        border-radius: 0px;
+    }
+
+    .mdc-text-field--outlined .mdc-notched-outline__idle{
+        border-radius: 0px;
+    }
+
+    .mdc-text-field--textarea{
+        height:200px;
+    }
+
+    .mdc-text-field--textarea, .mdc-text-field--textarea textarea{
+        border-radius:0px !important;
+    }
+
+    .mdc-text-field--textarea textarea{
+        width:400px;
+        resize:none;
+    }
+
+    .mdc-text-field--textarea:not(.mdc-text-field--disabled){
+        border-color: rgba(0, 0, 0, 0.24);
     }
 
     // .mdc-text-field:not(.mdc-text-field--textarea){
