@@ -31,11 +31,11 @@ class VgtLoading {
 
     static hide(){
         setTimeout(function() {
-            $('.og-loading-overlay').fadeOut(200);
+            $('.vgt-loading-overlay').fadeOut(200);
             $('.vgt-load-progress').fadeOut(200);
 
             setTimeout(function() {
-                $('.og-loading-overlay').remove();
+                $('.vgt-loading-overlay').remove();
                 $('.vgt-load-progress').remove();
             }, 0);
         }, 200);

@@ -39,6 +39,7 @@ class VgtNetwork {
         OPTIONS.success = function(data){  
             if(!OPTIONS.preventSuccessDefault){
                 if(data.Status == 200){
+                    VgtToast.show({ content: 'İşlem başarılı.' });
                     console.log('İstek başarılı');
                 }
                 else if(data.Status == 402){
