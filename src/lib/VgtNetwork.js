@@ -42,6 +42,12 @@ class VgtNetwork {
                     VgtToast.show({ content: 'İşlem başarılı.' });
                     console.log('İstek başarılı');
                 }
+                else if(data.Status == 400){
+                    // user.logout(context);
+                    // context.$root.$f7.toast.show({ text: 'Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapın.' });
+                    VgtToast.show({ content: 'Lütfen tüm alanları doldurup tekrar deneyin.' });
+                    return;
+                }
                 else if(data.Status == 402){
                     // user.logout(context);
                     // context.$root.$f7.toast.show({ text: 'Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapın.' });
